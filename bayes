@@ -1,0 +1,134 @@
+import numpy as np
+from matplotlib import pyplot as plt 
+
+Px=np.array([1/11,1/11,1/11,1/11,1/11,1/11,1/11,1/11,1/11,1/11,1/11])
+
+
+model=np.zeros(shape=(3,11,11))
+for i in range (11):
+	model[0][i][i-1]=0.85
+	model[0][i][i]=0.1
+	
+	model[1][i][i-1]=0.05
+	model[1][i][i]=0.9
+	
+	model[2][i][i-1]=0.05
+	model[2][i][i]=0.1
+	if i==10:
+		model[0][i][0]=0.05
+		model[1][i][0]=0.05
+		model[2][i][0]=0.85
+	else:
+		model[2][i][i+1]=0.85
+		model[1][i][i+1]=0.05
+		model[0][i][i+1]=0.05
+
+print(model)
+
+b=np.array([0.05,0.2,0.6,0.05,0.05,0.2,0.6,0.05,0.05,0.2,0.6])
+g=np.array([0.05,0.6,0.2,0.05,0.05,0.6,0.2,0.05,0.05,0.6,0.2])
+y=np.array([0.65,0.05,0.05,0.2,0.2,0.05,0.05,0.2,0.65,0.05,0.05])
+o=np.array([0.15,0.05,0.05,0.6,0.6,0.05,0.05,0.6,0.15,0.05,0.05])
+
+x= [2,3,4,5,6,7,8,9,10,11,12]
+
+Px=np.matmul(model[0],Px)
+
+Px=np.matmul(model[0],Px)
+Px=np.multiply(o,Px)
+Px=Px/(sum(Px))
+print(Px)
+plt.bar(x,Px)
+plt.title('orange')
+plt.show()
+
+Px=np.matmul(model[0],Px)
+Px=np.multiply(y,Px)
+Px=Px/(sum(Px))
+print(Px)
+plt.bar(x,Px)
+plt.show()
+plt.title('yellow')
+
+Px=np.matmul(model[0],Px)
+Px=np.multiply(g,Px)
+Px=Px/(sum(Px))
+print(Px)
+plt.bar(x,Px)
+plt.title('green')
+plt.show()
+
+
+Px=np.matmul(model[0],Px)
+Px=np.multiply(b,Px)
+Px=Px/(sum(Px))
+print(Px)
+plt.bar(x,Px)
+plt.title('blue')
+plt.show()
+
+
+Px=np.matmul(model[0],Px)
+Px=Px/(sum(Px))
+print(Px)
+plt.bar(x,Px)
+plt.title('nothing')
+plt.show()
+
+Px=np.matmul(model[0],Px)
+Px=np.multiply(g,Px)
+Px=Px/(sum(Px))
+print(Px)
+plt.bar(x,Px)
+plt.title('green')
+plt.show()
+
+Px=np.matmul(model[0],Px)
+Px=np.multiply(b,Px)
+Px=Px/(sum(Px))
+print(Px)
+plt.bar(x,Px)
+plt.show()
+plt.title('blue')
+
+Px=np.matmul(model[1],Px)
+Px=np.multiply(g,Px)
+Px=Px/(sum(Px))
+print(Px)
+plt.bar(x,Px)
+plt.title('green')
+plt.show()
+
+Px=np.matmul(model[0],Px)
+Px=np.multiply(o,Px)
+Px=Px/(sum(Px))
+print(Px)
+plt.bar(x,Px)
+plt.title('orange')
+plt.show()
+
+Px=np.matmul(model[0],Px)
+Px=np.multiply(y,Px)
+Px=Px/(sum(Px))
+print(Px)
+plt.bar(x,Px)
+plt.title('yellow')
+plt.show()
+
+Px=np.matmul(model[0],Px)
+Px=np.multiply(g,Px)
+Px=Px/(sum(Px))
+print(Px)
+plt.bar(x,Px)
+plt.title('green')
+plt.show()
+
+
+Px=np.multiply(b,Px)
+Px=Px/(sum(Px))
+print(Px)
+plt.bar(x,Px)
+plt.title('blue')
+plt.show()
+
+
